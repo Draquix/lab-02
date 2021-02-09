@@ -40,6 +40,7 @@ $.ajax('data/page-1.json').then(callStuffBack => {
     const horns = [];
     callStuffBack.forEach( (horner) => {
         horns.push(new Horn(horner.img_url,horner.title,horner.description,horner.keyword,horner.horns));
+        $('select').append(`<option value="${horner.keyword}">${horner.keyword}</option>`);
         console.log('json horners:',horner);
     });
     
