@@ -26,20 +26,13 @@ Horn.prototype.render = function (){
     $('main').append($template);
 }
 
-const chameleon = new Horn("https://imgc.allpostersimages.com/img/print/posters/dlillc-jackson-s-chameleon_a-G-13448768-14258384.jpg",
-"Serious Jackson's Chameleon",
-"This one is very serious.",
-"chameleon",
-3);
-
-chameleon.render();
 
 
 $.ajax('data/page-1.json').then(callStuffBack => {
     console.log(callStuffBack);
     const horns = [];
     callStuffBack.forEach( (horner) => {
-        horns.push(new Horn(horner.img_url,horner.title,horner.description,horner.keyword,horner.horns));
+        horns.push(new Horn(horner.image_url,horner.title,horner.description,horner.keyword,horner.horns));
         $('select').append(`<option value="${horner.keyword}">${horner.keyword}</option>`);
         console.log('json horners:',horner);
     });
