@@ -1,7 +1,7 @@
 'use strict';
 console.log('script is connected');
 function Horn (img,title,desc,keyword,horns) {
-    this.img = img;
+    this.image_url = img;
     this.title = title;
     this.description = desc;
     this.keyword = keyword;
@@ -9,22 +9,27 @@ function Horn (img,title,desc,keyword,horns) {
 } 
 
 Horn.prototype.render = function (){
-    
-    const $template = $('#photo-template').clone();
-    $template.removeAttr('id');
-    $template.attr('id',this.keyword);
-    console.log($template.attr('id'));
-  
-    const $h2 = $template.find('h2');
-    $h2.text(this.title);
-    console.log('within render function, h2:',this.title);
-    const $image = $template.find('img');
-    $image.attr('src', this.img);
-    $image.attr('alt', this.keyword);
-    $template.find('p').text(this.description);
-    console.log($template);
-    $('main').append($template);
+    const htmlTemplate = $('#photo-template').html();
+    const hornObject = this;
+    const renderedHornObject = Mustache.render(htmlTemplate, hornObject);
+    $('main').append(renderedHornObject);
 }
+
+    // const $template = $('#photo-template').clone();
+    // $template.removeAttr('id');
+    // $template.attr('id',this.keyword);
+    // console.log($template.attr('id'));
+  
+    // const $h2 = $template.find('h2');
+    // $h2.text(this.title);
+    // console.log('within render function, h2:',this.title);
+    // const $image = $template.find('img');
+    // $image.attr('src', this.img);
+    // $image.attr('alt', this.keyword);
+    // $template.find('p').text(this.description);
+    // console.log($template);
+    // $('main').append($template);
+
 
 
 
@@ -41,8 +46,8 @@ $.ajax('data/page-1.json').then(callStuffBack => {
     $('select').change( function () {
         const choice = $('select').find(':selected').text();
         console.log(choice);
-        $('section').hide();
-        $(`#${choice}`).show();
+        $('div').hide();
+        $(`.${choice}`).show();
     });
     horns.forEach(horner => { horner.render();});
 })
