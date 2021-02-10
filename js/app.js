@@ -36,6 +36,13 @@ $.ajax('data/page-1.json').then(callStuffBack => {
         $('select').append(`<option value="${horner.keyword}">${horner.keyword}</option>`);
         console.log('json horners:',horner);
     });
+
     
+    $('select').change( function () {
+        const choice = $('select').find(':selected').text();
+        console.log(choice);
+        $('section').hide();
+        $(`#${choice}`).show();
+    });
     horns.forEach(horner => { horner.render();});
 })
