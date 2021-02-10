@@ -1,7 +1,10 @@
 
 main {
-    display:inline-block;
+    display:flex;
+    flex-flow:wrap;
+    justify-content: start;
 }
-section {
-    float:left;
+div {
+    width:200px;
+    
 }
