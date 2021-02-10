@@ -1,5 +1,5 @@
 
-main {
+section {
     display:flex;
     flex-flow:wrap;
     justify-content: start;
