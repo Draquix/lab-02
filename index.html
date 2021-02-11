@@ -14,6 +14,12 @@
     <header>
       <h1>The Gallery of Horns</h1>
       <article id="buttons">
+        <input type="radio" id="1horn" name="horns" value="1" onchange="showForHorns(1)" checked>
+        <label for="1horn">1 Horn</label>
+        <input type="radio" id="2horn" name="horns" value="2" onchange="showForHorns(2)">
+        <label for="2horn">2 Horns</label>
+        <input type="radio" id="3horn" name="horns" value="3" onchange="showForHorns(3)">
+        <label for="3horn">3 Horns</label>
         <button type="button" onclick="showPage(1)">Page 1</button>
         <button type="button" onclick="showPage(2)">Page 2</button>
       </article>
@@ -24,9 +30,11 @@
     <main>
       <template id="photo-template" type="text/x-tmpl-mustache" class="{{keyword}}">
         <div class="{{keyword}}">
+          <div class="{{horns}}">
         <h2>{{title}}, Horns:{{horns}}</h2>
         <img src="{{image_url}}" alt="{{keyword}}">
         <p>{{description}}</p>
+      </div>
         <div>
       </template>
       <section>
